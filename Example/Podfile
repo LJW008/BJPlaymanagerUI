@@ -1,0 +1,44 @@
+post_install do |installer|
+    
+    ## IPHONEOS_DEPLOYMENT_TARGET
+    # @see https://stackoverflow.com/a/37289688/456536
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '8.0'
+        end
+    end
+end
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'http://git.baijiashilian.com/open-ios/specs.git'
+
+platform :ios, '8.0'
+#use_frameworks!
+
+target 'BJPlayerManagerUI_Example' do
+    
+  pod 'BJPlayerManagerUI', :path => '../'
+
+  #点播
+  pod 'BJPlayerManagerCore'
+  pod 'BJVideoPlayer'
+  
+  #回放
+  pod 'BJPlaybackUI'
+  pod 'BJPlaybackCore'
+
+  #直播
+  pod 'BJLiveCore'
+  pod 'BJLiveBase'
+
+  pod 'MBProgressHUD', :inhibit_warnings => true
+  pod 'IQKeyboardManager', :inhibit_warnings => true
+  pod 'ReactiveObjC', :inhibit_warnings => true
+  pod 'Masonry', :inhibit_warnings => true
+  pod 'ASIHTTPRequest', :inhibit_warnings => true
+  
+  target 'BJPlayerManagerUI_Tests' do
+    inherit! :search_paths
+ 
+  end
+end
