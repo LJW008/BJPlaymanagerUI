@@ -14,6 +14,9 @@
 
 @property (nonatomic, readonly) BJPUFullBottomView *bottomBarView;
 
+@property (nonatomic , copy) NSString  * courseTitle;
+
+
 - (BOOL)isLocked;
 
 - (void)setupSubviews;

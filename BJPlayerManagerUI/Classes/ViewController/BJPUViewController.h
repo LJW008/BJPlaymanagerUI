@@ -38,6 +38,10 @@
 @property (copy, nonatomic) void(^exitBlock)(void);
 
 //播放完毕回调
-@property (copy, nonatomic) void(^finishPlayBlock)();
+@property (copy, nonatomic) void(^finishPlayBlock)(void);
+
+
+//视频的title
+@property (nonatomic , copy) NSString  *courseTitle;
 
 @end

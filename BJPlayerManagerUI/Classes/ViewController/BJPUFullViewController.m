@@ -23,6 +23,8 @@
 @property (strong, nonatomic, readwrite) BJPUFullBottomView *bottomBarView;
 @property (strong, nonatomic) BJPUFullRightView *rightView;
 @property (strong, nonatomic) UIButton *scaleButton;
+@property (nonatomic , strong) UILabel * courseTitleLabel;//课程标题
+
 
 @property (strong, nonatomic) BJPUDefinitionView *definitionView;
 @property (strong, nonatomic) BJPULessonListView *lessonListView;
@@ -65,6 +67,7 @@
 }
 
 - (void)setupSubviews {
+    
     [self.view addSubview:self.hudView];
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.topBarView];
@@ -72,6 +75,10 @@
     [self.view addSubview:self.lockButton];
     [self.view addSubview:self.rightView];
     [self.topBarView addSubview:self.scaleButton];
+    [self.topBarView addSubview:self.courseTitleLabel];
+    self.courseTitleLabel.text = self.courseTitle;
+
+
     
     [self.view addSubview:self.rateView];
     [self.view addSubview:self.lessonListView];
@@ -113,6 +120,16 @@
         make.height.mas_equalTo(30);
         make.width.mas_greaterThanOrEqualTo(40);
     }];
+    
+//    self.courseTitleLabel.backgroundColor = [UIColor redColor];
+    [self.courseTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.leading.equalTo(self.scaleButton.mas_right);
+        make.left.mas_equalTo(self.scaleButton.mas_right).offset(5.f);
+        make.top.equalTo(self.scaleButton.mas_top);
+        make.height.mas_equalTo(30);
+        make.width.mas_equalTo(300);
+    }];
+    
     [self.rateView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.trailing.offset(0.f);
         make.width.mas_equalTo(120);
@@ -429,6 +446,18 @@
         [_scaleButton addTarget:self action:@selector(scaleSmallScreenAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _scaleButton;
+}
+
+//课程展示的title
+-(UILabel *)courseTitleLabel
+{
+    if (!_courseTitleLabel) {
+        _courseTitleLabel = [UILabel new];
+        _courseTitleLabel.textColor = [UIColor whiteColor];
+        _courseTitleLabel.font = [UIFont systemFontOfSize:15.0f];
+//        _courseTitleLabel.backgroundColor = [UIColor redColor];
+    }
+    return _courseTitleLabel;
 }
 
 - (BJPURateView *)rateView

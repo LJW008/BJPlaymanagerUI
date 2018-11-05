@@ -52,6 +52,7 @@
     [self setupSubviews];
     
     // 自定义
+    self.fullVC.courseTitle = self.courseTitle;
     [self.fullVC setupSubviews];
     [self.view addSubview:self.fullVC.view];
     self.screenType = BJPUScreenType_Small;
