@@ -1,6 +1,0 @@
-framework module BJPlayerManagerUI {
-  umbrella header "BJPlayerManagerUI.h"
-
-  export *
-  module * { export * }
-}
