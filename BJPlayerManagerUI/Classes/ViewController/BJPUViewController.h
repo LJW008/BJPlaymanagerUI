@@ -44,4 +44,7 @@
 //视频的title
 @property (nonatomic , copy) NSString  *courseTitle;
 
+
+@property (nonatomic , copy) NSString  *test;
+
 @end
